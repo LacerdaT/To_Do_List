@@ -2,7 +2,7 @@ package br.com.todolist.DTO;
 
 import java.util.UUID;
 
-public record TodosRedordDTO(UUID id,
+public record TodosRecordDTO(UUID id,
                              String nome,
                              String descricao,
                              int prioridade,
