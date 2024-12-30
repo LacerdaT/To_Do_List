@@ -29,7 +29,7 @@ public class TodosModel extends RepresentationModel<TodosModel> implements Seria
     private String description;
 
     @Column(name = "PRIORITY")
-    private int priority;
+    private PriorityRole priority;
 
     @Column(name = "COMPLETED")
     private boolean completed;
@@ -38,7 +38,25 @@ public class TodosModel extends RepresentationModel<TodosModel> implements Seria
 
     }
 
-    public TodosModel(UUID id, String name, String description, int priority, boolean completed) {
+    public TodosModel(UUID id, String name, String description, PriorityRole priority, boolean completed) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.priority = priority;
+        this.completed = completed;
+    }
+
+    public TodosModel(Link initialLink, UUID id, String name, String description, PriorityRole priority, boolean completed) {
+        super(initialLink);
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.priority = priority;
+        this.completed = completed;
+    }
+
+    public TodosModel(Iterable<Link> initialLinks, UUID id, String name, String description, PriorityRole priority, boolean completed) {
+        super(initialLinks);
         this.id = id;
         this.name = name;
         this.description = description;
@@ -70,11 +88,11 @@ public class TodosModel extends RepresentationModel<TodosModel> implements Seria
         this.description = description;
     }
 
-    public int getPriority() {
+    public PriorityRole getPriority() {
         return priority;
     }
 
-    public void setPriority(int priority) {
+    public void setPriority(PriorityRole priority) {
         this.priority = priority;
     }
 
@@ -96,7 +114,5 @@ public class TodosModel extends RepresentationModel<TodosModel> implements Seria
                 ", completed=" + completed +
                 '}';
     }
-
-
 }
 
