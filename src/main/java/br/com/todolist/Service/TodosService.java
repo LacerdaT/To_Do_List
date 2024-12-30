@@ -26,7 +26,7 @@ public class TodosService {
 
 
     public List<TodosModel> list(){
-        Sort sort = Sort.by("priority").descending().and(by("name").ascending());
+        Sort sort = Sort.by("priority").descending().and(by("completed").descending());
        return todosRepository.findAll(sort);
     }
 
