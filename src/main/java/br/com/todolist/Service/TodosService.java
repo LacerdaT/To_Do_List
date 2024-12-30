@@ -1,15 +1,17 @@
 package br.com.todolist.Service;
 
-import br.com.todolist.Model.Todos;
+import br.com.todolist.Model.TodosModel;
 import br.com.todolist.Repository.TodosRepository;
 import org.springframework.data.domain.Sort;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 import static org.springframework.data.domain.Sort.by;
 
-
+@Service
 public class TodosService {
 
     public TodosRepository todosRepository;
@@ -18,22 +20,26 @@ public class TodosService {
         this.todosRepository = todosRepository;
     }
 
-    public List<Todos> create(Todos todos){
-        todosRepository.save(todos);
-        return list();
+    public TodosModel create(TodosModel todosModel){
+        return todosRepository.save(todosModel);
     }
 
-    public List<Todos> list(){
-        Sort sort = Sort.by("prioridades").descending().and(by("nome").ascending());
+
+    public List<TodosModel> list(){
+        Sort sort = Sort.by("priority").descending().and(by("name").ascending());
        return todosRepository.findAll(sort);
     }
 
-    public List<Todos> update(Todos todos){
-        todosRepository.save(todos);
-        return list();
+    public Optional<TodosModel> listId(UUID id){
+        return todosRepository.findById(id);
     }
 
-    public List<Todos> delete(UUID id){
+    public TodosModel update(TodosModel todosModel) {
+        return todosRepository.save(todosModel);
+    }
+
+
+    public List<TodosModel> delete(UUID id){
         todosRepository.deleteById(id);
         return list();
     }
