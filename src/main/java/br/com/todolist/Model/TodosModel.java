@@ -23,9 +23,11 @@ public class TodosModel extends RepresentationModel<TodosModel> implements Seria
     private UUID id;
 
     @Column(name = "NAME")
+    @NonNull
     private String name;
 
     @Column(name = "DESCRIPTION")
+    @NonNull
     private String description;
 
     @Column(name = "PRIORITY")
@@ -38,7 +40,7 @@ public class TodosModel extends RepresentationModel<TodosModel> implements Seria
 
     }
 
-    public TodosModel(UUID id, String name, String description, PriorityRole priority, boolean completed) {
+    public TodosModel(UUID id, @NonNull String name, @NonNull String description, PriorityRole priority, boolean completed) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -46,7 +48,7 @@ public class TodosModel extends RepresentationModel<TodosModel> implements Seria
         this.completed = completed;
     }
 
-    public TodosModel(Link initialLink, UUID id, String name, String description, PriorityRole priority, boolean completed) {
+    public TodosModel(Link initialLink, UUID id, @NonNull String name, @NonNull String description, PriorityRole priority, boolean completed) {
         super(initialLink);
         this.id = id;
         this.name = name;
@@ -55,7 +57,7 @@ public class TodosModel extends RepresentationModel<TodosModel> implements Seria
         this.completed = completed;
     }
 
-    public TodosModel(Iterable<Link> initialLinks, UUID id, String name, String description, PriorityRole priority, boolean completed) {
+    public TodosModel(Iterable<Link> initialLinks, UUID id, @NonNull String name, @NonNull String description, PriorityRole priority, boolean completed) {
         super(initialLinks);
         this.id = id;
         this.name = name;
@@ -64,7 +66,7 @@ public class TodosModel extends RepresentationModel<TodosModel> implements Seria
         this.completed = completed;
     }
 
-    public TodosModel(String name, String description, PriorityRole priority, boolean completed) {
+    public TodosModel(@NonNull String name, @NonNull String description, PriorityRole priority, boolean completed) {
         this.name = name;
         this.description = description;
         this.priority = priority;
