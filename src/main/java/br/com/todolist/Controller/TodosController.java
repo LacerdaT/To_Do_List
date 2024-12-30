@@ -58,7 +58,7 @@ public class TodosController {
 
 
     @PutMapping("/todos/{id}")
-    public ResponseEntity<Object> updateProduct(@PathVariable(value="id") UUID id,
+    public ResponseEntity<Object> updateTodo(@PathVariable(value="id") UUID id,
                                                 @RequestBody @Valid TodosRecordDTO todosRecordDTO) {
         Optional<TodosModel> todoOptional = todosService.listId(id);
         if (todoOptional.isEmpty()) {

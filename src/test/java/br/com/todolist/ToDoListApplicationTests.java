@@ -39,7 +39,6 @@ class ToDoListApplicationTests {
 						new TodosModel("", "", PriorityRole.HIGH, false)
 				).exchange()
 				.expectStatus().isBadRequest();
-
 	}
 
 }
