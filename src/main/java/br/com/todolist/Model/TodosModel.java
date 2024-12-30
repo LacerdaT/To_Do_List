@@ -64,6 +64,13 @@ public class TodosModel extends RepresentationModel<TodosModel> implements Seria
         this.completed = completed;
     }
 
+    public TodosModel(String name, String description, PriorityRole priority, boolean completed) {
+        this.name = name;
+        this.description = description;
+        this.priority = priority;
+        this.completed = completed;
+    }
+
     public UUID getId() {
         return id;
     }
@@ -102,17 +109,6 @@ public class TodosModel extends RepresentationModel<TodosModel> implements Seria
 
     public void setCompleted(boolean completed) {
         this.completed = completed;
-    }
-
-    @Override
-    public String toString() {
-        return "TodosModel{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", priority=" + priority +
-                ", completed=" + completed +
-                '}';
     }
 }
 
