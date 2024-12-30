@@ -73,11 +73,12 @@ public class TodosController {
 
     @DeleteMapping("/todos/{id}")
     public ResponseEntity<Object> deleteTodo(@PathVariable(value="id") UUID id) {
-        List<TodosModel> todo = todosService.delete(id);
-        if(todo.isEmpty()) {
+        Optional<TodosModel> todoOptional = todosService.listId(id);
+        if (todoOptional.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Task not found.");
         }
-        this.todosService.delete(id);
+        todosService.delete(id);
         return ResponseEntity.status(HttpStatus.OK).body("Task deleted successfully.");
     }
+
 }
