@@ -1,5 +1,6 @@
 package br.com.todolist.Model;
 
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.hateoas.RepresentationModel;
 import jakarta.persistence.*;
 import lombok.*;
@@ -16,6 +17,7 @@ import java.util.UUID;
 public class TodosModel extends RepresentationModel<TodosModel> implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -81,19 +83,19 @@ public class TodosModel extends RepresentationModel<TodosModel> implements Seria
         this.id = id;
     }
 
-    public String getName() {
+    public @NonNull String getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(@NonNull String name) {
         this.name = name;
     }
 
-    public String getDescription() {
+    public @NonNull String getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(@NonNull String description) {
         this.description = description;
     }
 

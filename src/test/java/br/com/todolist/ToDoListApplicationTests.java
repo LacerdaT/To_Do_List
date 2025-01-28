@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.reactive.server.WebTestClient;
 
+import java.util.Optional;
+
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class ToDoListApplicationTests {
 
@@ -27,7 +29,7 @@ class ToDoListApplicationTests {
 				.jsonPath("$.name").isEqualTo(todos.getName())
 				.jsonPath("$.description").isEqualTo(todos.getDescription())
 				.jsonPath("$.priority").isEqualTo(todos.getPriority())
-				.jsonPath("$.completed").isEqualTo(todos.isCompleted());
+				.jsonPath("$.completed").isEqualTo(Optional.of(todos.isCompleted()));
 	}
 
 	@Test
