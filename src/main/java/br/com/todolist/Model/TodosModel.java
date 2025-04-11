@@ -114,5 +114,7 @@ public class TodosModel extends RepresentationModel<TodosModel> implements Seria
     public void setCompleted(boolean completed) {
         this.completed = completed;
     }
+
+
 }
 
